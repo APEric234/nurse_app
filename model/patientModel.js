@@ -1,10 +1,19 @@
+const {Pool} = require("pg");
+const db_url=process.env.DATABASE_URL;
+const pool = new Pool({connectionString:db_url});
+
 function getAllPatients(){
   //get all topics
-  var result={patients: [{"billly bob":1},
-  {"billly joe bob":2},
-  {"billly joe":3},
-  {"billly sue":4}]};
-  return result;
+  var sql = "select * from patients";
+  pool.query(sql, function(err,res){
+    if(err){
+      throw err;
+    }else{
+      console.log(" back form the db with: ");
+      console.log(res);
+      return res;
+    }
+  });
 
 }
 function getPatientById(num){
