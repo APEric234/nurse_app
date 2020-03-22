@@ -11,7 +11,8 @@ function getAllPatients(){
     }else{
       console.log(" back form the db with: ");
       console.log(res);
-      return res;
+      //var results = {res.rows}
+      //return res;
     }
   });
 
